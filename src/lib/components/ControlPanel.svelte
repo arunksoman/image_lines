@@ -483,7 +483,7 @@
 	.panel-header {
 		padding: var(--space-lg) var(--space-xl);
 		border-bottom: 1px solid var(--border-primary);
-		background: linear-gradient(180deg, rgba(108, 99, 255, 0.06) 0%, transparent 100%);
+		background: linear-gradient(180deg, var(--accent-glow-subtle) 0%, transparent 100%);
 	}
 	.logo {
 		display: flex;
@@ -577,7 +577,7 @@
 		font-family: var(--font-mono);
 		font-size: 11px;
 		color: var(--text-accent);
-		background: rgba(108, 99, 255, 0.1);
+		background: var(--accent-glow-subtle);
 		padding: 1px 6px;
 		border-radius: var(--radius-sm);
 	}
@@ -630,7 +630,7 @@
 	}
 	.dropzone:hover, .dropzone.dragging {
 		border-color: var(--accent-primary);
-		background: rgba(108, 99, 255, 0.05);
+		background: var(--accent-glow-subtle);
 	}
 	.dropzone.has-image {
 		border-color: var(--accent-success);
@@ -696,7 +696,7 @@
 		border-color: var(--border-hover);
 	}
 	.mode-btn.active {
-		background: rgba(108, 99, 255, 0.12);
+		background: var(--accent-glow-subtle);
 		border-color: var(--accent-primary);
 		color: var(--text-primary);
 		box-shadow: var(--shadow-glow);
@@ -813,7 +813,7 @@
 		transition: all var(--transition-fast);
 	}
 	.reset-btn:hover {
-		background: rgba(239, 68, 68, 0.08);
+		background: var(--accent-danger-bg);
 		border-color: var(--accent-danger);
 		color: var(--accent-danger);
 	}

@@ -35,6 +35,17 @@
 	onMount(() => {
 		sceneManager = createSceneManager(canvasEl);
 
+		// Apply initial theme
+		const initialTheme = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+		sceneManager.setTheme(initialTheme);
+
+		// Observe theme changes
+		const themeObserver = new MutationObserver(() => {
+			const theme = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+			sceneManager?.setTheme(theme);
+		});
+		themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
 		// Initial size
 		const rect = containerEl.getBoundingClientRect();
 		sceneManager.resize(rect.width, rect.height);
@@ -49,6 +60,7 @@
 		observer.observe(containerEl);
 
 		return () => {
+			themeObserver.disconnect();
 			observer.disconnect();
 			sceneManager?.dispose();
 		};
@@ -222,7 +234,7 @@
 	}
 	.info-badge {
 		padding: 4px 10px;
-		background: rgba(10, 10, 15, 0.8);
+		background: var(--bg-overlay);
 		backdrop-filter: blur(10px);
 		border: 1px solid var(--border-primary);
 		border-radius: var(--radius-full);
