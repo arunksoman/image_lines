@@ -1,0 +1,129 @@
+/* ═══════════════════════════════════════════════════════════════
+   ImageLines Playground — Design System
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+	/* Color palette — dark industrial theme */
+	--bg-primary: #0a0a0f;
+	--bg-secondary: #12121a;
+	--bg-tertiary: #1a1a26;
+	--bg-panel: #14141e;
+	--bg-input: #1e1e2e;
+	--bg-hover: #252538;
+	--bg-active: #2a2a40;
+
+	/* Accent colors */
+	--accent-primary: #6c63ff;
+	--accent-secondary: #a78bfa;
+	--accent-glow: rgba(108, 99, 255, 0.25);
+	--accent-warm: #f59e0b;
+	--accent-success: #10b981;
+	--accent-danger: #ef4444;
+
+	/* Text colors */
+	--text-primary: #e8e8f0;
+	--text-secondary: #9898b0;
+	--text-muted: #5a5a73;
+	--text-accent: #a78bfa;
+
+	/* Borders */
+	--border-primary: rgba(255, 255, 255, 0.06);
+	--border-hover: rgba(255, 255, 255, 0.12);
+	--border-accent: rgba(108, 99, 255, 0.4);
+
+	/* Shadows */
+	--shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+	--shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+	--shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.6);
+	--shadow-glow: 0 0 20px rgba(108, 99, 255, 0.15);
+
+	/* Typography */
+	--font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+	--font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+	/* Spacing */
+	--space-xs: 4px;
+	--space-sm: 8px;
+	--space-md: 12px;
+	--space-lg: 16px;
+	--space-xl: 24px;
+	--space-2xl: 32px;
+
+	/* Radius */
+	--radius-sm: 6px;
+	--radius-md: 10px;
+	--radius-lg: 14px;
+	--radius-full: 9999px;
+
+	/* Transitions */
+	--transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+	--transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+	--transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+
+	/* Layout */
+	--panel-width: 340px;
+	--header-height: 56px;
+}
+
+/* Reset */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html, body {
+	height: 100%;
+	overflow: hidden;
+}
+
+body {
+	font-family: var(--font-sans);
+	background: var(--bg-primary);
+	color: var(--text-primary);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	line-height: 1.5;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+	width: 5px;
+}
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+::-webkit-scrollbar-thumb {
+	background: var(--bg-active);
+	border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+	background: var(--text-muted);
+}
+
+/* Selection */
+::selection {
+	background: var(--accent-primary);
+	color: #fff;
+}
+
+/* Focus visible */
+:focus-visible {
+	outline: 2px solid var(--accent-primary);
+	outline-offset: 2px;
+}
+
+/* Utility classes */
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border-width: 0;
+}
