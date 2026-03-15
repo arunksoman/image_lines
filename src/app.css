@@ -3,7 +3,7 @@
    ═══════════════════════════════════════════════════════════════ */
 
 :root {
-	/* Color palette — dark industrial theme */
+	/* Color palette — dark industrial theme (default) */
 	--bg-primary: #0a0a0f;
 	--bg-secondary: #12121a;
 	--bg-tertiary: #1a1a26;
@@ -11,14 +11,23 @@
 	--bg-input: #1e1e2e;
 	--bg-hover: #252538;
 	--bg-active: #2a2a40;
+	--bg-overlay: rgba(10, 10, 15, 0.85);
 
 	/* Accent colors */
 	--accent-primary: #6c63ff;
 	--accent-secondary: #a78bfa;
 	--accent-glow: rgba(108, 99, 255, 0.25);
+	--accent-glow-subtle: rgba(108, 99, 255, 0.08);
 	--accent-warm: #f59e0b;
 	--accent-success: #10b981;
 	--accent-danger: #ef4444;
+	--accent-danger-bg: rgba(239, 68, 68, 0.1);
+	--accent-danger-border: rgba(239, 68, 68, 0.2);
+	--accent-danger-text: #f87171;
+	--accent-blue: #4488ff;
+	--accent-blue-subtle: rgba(68, 136, 255, 0.15);
+	--accent-blue-border: rgba(68, 136, 255, 0.4);
+	--accent-blue-text: #88bbff;
 
 	/* Text colors */
 	--text-primary: #e8e8f0;
@@ -30,12 +39,21 @@
 	--border-primary: rgba(255, 255, 255, 0.06);
 	--border-hover: rgba(255, 255, 255, 0.12);
 	--border-accent: rgba(108, 99, 255, 0.4);
+	--border-dashed: rgba(255, 255, 255, 0.12);
 
 	/* Shadows */
 	--shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
 	--shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
 	--shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.6);
 	--shadow-glow: 0 0 20px rgba(108, 99, 255, 0.15);
+
+	/* Nav */
+	--nav-bg: rgba(13, 13, 20, 0.85);
+	--nav-border: rgba(255, 255, 255, 0.08);
+	--nav-text: rgba(255, 255, 255, 0.5);
+	--nav-text-hover: #ffffff;
+	--nav-item-hover-bg: rgba(255, 255, 255, 0.08);
+	--nav-sep: rgba(255, 255, 255, 0.12);
 
 	/* Typography */
 	--font-sans: 'Inter', system-ui, -apple-system, sans-serif;
@@ -63,6 +81,51 @@
 	/* Layout */
 	--panel-width: 340px;
 	--header-height: 56px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Light Theme
+   ═══════════════════════════════════════════════════════════════ */
+:root[data-theme='light'] {
+	--bg-primary: #f5f5f8;
+	--bg-secondary: #ebebf0;
+	--bg-tertiary: #e0e0e8;
+	--bg-panel: #ffffff;
+	--bg-input: #f0f0f5;
+	--bg-hover: #e2e2ec;
+	--bg-active: #d5d5e0;
+	--bg-overlay: rgba(255, 255, 255, 0.85);
+
+	--accent-glow: rgba(108, 99, 255, 0.18);
+	--accent-glow-subtle: rgba(108, 99, 255, 0.06);
+	--accent-danger-bg: rgba(239, 68, 68, 0.08);
+	--accent-danger-border: rgba(239, 68, 68, 0.25);
+	--accent-danger-text: #dc2626;
+	--accent-blue-subtle: rgba(68, 136, 255, 0.1);
+	--accent-blue-border: rgba(68, 136, 255, 0.35);
+	--accent-blue-text: #2563eb;
+
+	--text-primary: #1a1a2e;
+	--text-secondary: #555570;
+	--text-muted: #8888a0;
+	--text-accent: #6c63ff;
+
+	--border-primary: rgba(0, 0, 0, 0.08);
+	--border-hover: rgba(0, 0, 0, 0.14);
+	--border-accent: rgba(108, 99, 255, 0.45);
+	--border-dashed: rgba(0, 0, 0, 0.12);
+
+	--shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+	--shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+	--shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+	--shadow-glow: 0 0 20px rgba(108, 99, 255, 0.1);
+
+	--nav-bg: rgba(255, 255, 255, 0.85);
+	--nav-border: rgba(0, 0, 0, 0.08);
+	--nav-text: rgba(0, 0, 0, 0.45);
+	--nav-text-hover: #1a1a2e;
+	--nav-item-hover-bg: rgba(0, 0, 0, 0.06);
+	--nav-sep: rgba(0, 0, 0, 0.1);
 }
 
 /* Reset */

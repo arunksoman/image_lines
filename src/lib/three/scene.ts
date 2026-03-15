@@ -16,6 +16,7 @@ export interface SceneManager {
 	resize: (width: number, height: number) => void;
 	updateSlots: (slots: Slot[], panelWidth: number, panelHeight: number, panelThickness: number) => void;
 	setVisualMode: (mode: 'day' | 'daylight' | 'night' | 'distance') => void;
+	setTheme: (theme: 'dark' | 'light') => void;
 	getScene: () => THREE.Scene;
 	getRenderer: () => THREE.WebGLRenderer;
 }
@@ -101,6 +102,7 @@ export function createSceneManager(canvas: HTMLCanvasElement): SceneManager {
 	let backlightPlane: THREE.Mesh | null = null;
 	let slotInstancedMesh: THREE.InstancedMesh | null = null;
 	let currentMode: 'day' | 'daylight' | 'night' | 'distance' = 'day';
+	let currentTheme: 'dark' | 'light' = 'dark';
 
 	function clearPanelObjects() {
 		if (panelMesh) {
@@ -179,28 +181,32 @@ export function createSceneManager(canvas: HTMLCanvasElement): SceneManager {
 	function applyVisualMode(mode: 'day' | 'daylight' | 'night' | 'distance') {
 		currentMode = mode;
 
+		const isLight = currentTheme === 'light';
+
 		switch (mode) {
-			case 'day':
-				scene.background = new THREE.Color(0x0d0d14);
-				scene.fog = new THREE.FogExp2(0x0d0d14, 0.00015);
-				ambientLight.intensity = 0.6;
-				ambientLight.color.set(0x404060);
-				dirLight.intensity = 1.8;
+			case 'day': {
+				const bg = isLight ? 0xe8ecf0 : 0x0d0d14;
+				scene.background = new THREE.Color(bg);
+				scene.fog = new THREE.FogExp2(bg, 0.00015);
+				ambientLight.intensity = isLight ? 1.0 : 0.6;
+				ambientLight.color.set(isLight ? 0x8888aa : 0x404060);
+				dirLight.intensity = isLight ? 2.2 : 1.8;
 				dirLight.color.set(0xfff5e6);
-				fillLight.intensity = 0.4;
+				fillLight.intensity = isLight ? 0.7 : 0.4;
 				if (backlightPlane) backlightPlane.visible = false;
 				if (slotInstancedMesh) {
-					(slotInstancedMesh.material as THREE.MeshBasicMaterial).color.set(0x0d0d14);
+					(slotInstancedMesh.material as THREE.MeshBasicMaterial).color.set(bg);
 				}
 				if (panelMesh) {
-					(panelMesh.material as THREE.MeshStandardMaterial).color.set(0x8c8c8c);
+					(panelMesh.material as THREE.MeshStandardMaterial).color.set(isLight ? 0xa0a0a0 : 0x8c8c8c);
 					(panelMesh.material as THREE.MeshStandardMaterial).metalness = 0.85;
-					(panelMesh.material as THREE.MeshStandardMaterial).roughness = 0.45;
+					(panelMesh.material as THREE.MeshStandardMaterial).roughness = isLight ? 0.35 : 0.45;
 				}
 				ground.visible = true;
-				groundMat.color.set(0x0a0a12);
+				groundMat.color.set(isLight ? 0xd0d0d8 : 0x0a0a12);
 				gridHelper.visible = true;
 				break;
+			}
 
 			case 'daylight':
 				scene.background = new THREE.Color(0xf0f4f8);
@@ -300,6 +306,10 @@ export function createSceneManager(canvas: HTMLCanvasElement): SceneManager {
 
 		updateSlots,
 		setVisualMode: applyVisualMode,
+		setTheme(theme: 'dark' | 'light') {
+			currentTheme = theme;
+			applyVisualMode(currentMode);
+		},
 		getScene: () => scene,
 		getRenderer: () => renderer,
 	};
